@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IvliPass</string>
+    <string name="title_home">Generation</string>
+    <string name="title_dashboard">Saved</string>
+    <string name="title_notifications">Check</string>
+    <string name="username">Username</string>
+</resources>
