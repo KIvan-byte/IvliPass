@@ -1,19 +1,11 @@
 package com.example.myapplication.ui.generation;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class GenerationViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
-
-    public GenerationViewModel() {
-        mText = new MutableLiveData<>();
-        
-    }
-
-    public LiveData<String> getText() {
-        return mText;
+    public void savePassword(String service, String email, String password) {
+        // Implement your database saving logic here
+        // Make sure to encrypt the password before saving
     }
 }
