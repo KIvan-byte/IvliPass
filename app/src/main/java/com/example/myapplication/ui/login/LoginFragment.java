@@ -42,7 +42,7 @@ public class LoginFragment extends Fragment {
                     // Переход на HomeFragment
                     ((MainActivity) requireActivity()).navigateToHome();
                 } else {
-                    Toast.makeText(getContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Invalid login or password", Toast.LENGTH_SHORT).show();
                 }
             }
         });

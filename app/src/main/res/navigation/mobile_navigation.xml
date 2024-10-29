@@ -12,23 +12,23 @@
         <!-- Действие для перехода к HomeFragment -->
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@layout/fragment_home" />
+            app:destination="@layout/fragment_generation" />
     </fragment>
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.example.myapplication.ui.home.GenerationFragment"
+        android:label="@string/title_generation"
+        tools:layout="@layout/fragment_generation" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.myapplication.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.example.myapplication.ui.dashboard.SavedFragment"
+        android:label="@string/title_saved"
+        tools:layout="@layout/fragment_saved" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.example.myapplication.ui.notifications.CheckFragment"
+        android:label="@string/title_check"
+        tools:layout="@layout/fragment_check" />
 </navigation>
