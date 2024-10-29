@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.home; // Замените на ваш пакет
+package com.example.myapplication.ui.generation; // Замените на ваш пакет
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;

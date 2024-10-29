@@ -1,16 +1,16 @@
-package com.example.myapplication.ui.dashboard;
+package com.example.myapplication.ui.generation;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SavedViewModel extends ViewModel {
+public class GenerationViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public SavedViewModel() {
+    public GenerationViewModel() {
         mText = new MutableLiveData<>();
-//        mText.setValue("This is dashboard fragment");
+        
     }
 
     public LiveData<String> getText() {

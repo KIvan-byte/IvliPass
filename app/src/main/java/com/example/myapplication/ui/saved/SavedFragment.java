@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.notifications;
+package com.example.myapplication.ui.saved;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,22 +9,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myapplication.databinding.FragmentCheckBinding;
 
-public class CheckFragment extends Fragment {
+import com.example.myapplication.databinding.FragmentSavedBinding;
 
-    private FragmentCheckBinding binding;
+public class SavedFragment extends Fragment {
+
+    private FragmentSavedBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        CheckViewModel notificationsViewModel =
-                new ViewModelProvider(this).get(CheckViewModel.class);
+        SavedViewModel dashboardViewModel =
+                new ViewModelProvider(this).get(SavedViewModel.class);
 
-        binding = FragmentCheckBinding.inflate(inflater, container, false);
+        binding = FragmentSavedBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-////        final TextView textView = binding.editTextText;
-//        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+//        final TextView textView = binding.textDashboard;
+//        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

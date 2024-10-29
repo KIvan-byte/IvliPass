@@ -16,19 +16,19 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.ui.home.GenerationFragment"
+        android:name="com.example.myapplication.ui.generation.GenerationFragment"
         android:label="@string/title_generation"
         tools:layout="@layout/fragment_generation" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.myapplication.ui.dashboard.SavedFragment"
+        android:name="com.example.myapplication.ui.saved.SavedFragment"
         android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.ui.notifications.CheckFragment"
+        android:name="com.example.myapplication.ui.check.CheckFragment"
         android:label="@string/title_check"
         tools:layout="@layout/fragment_check" />
 </navigation>

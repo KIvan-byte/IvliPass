@@ -1,16 +1,16 @@
-package com.example.myapplication.ui.notifications;
+package com.example.myapplication.ui.saved;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class CheckViewModel extends ViewModel {
+public class SavedViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public CheckViewModel() {
+    public SavedViewModel() {
         mText = new MutableLiveData<>();
-//        mText.setValue("This is notifications fragment");
+//        mText.setValue("This is dashboard fragment");
     }
 
     public LiveData<String> getText() {
