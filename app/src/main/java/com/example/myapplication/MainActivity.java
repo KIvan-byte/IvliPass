@@ -1,90 +1,52 @@
+// MainActivity.java
 package com.example.myapplication;
 
-import android.os.Bundle;
-
-import com.example.myapplication.ui.login.LoginFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.myapplication.databinding.ActivityMainBinding;
-
-//public class MainActivity extends AppCompatActivity {
-//
-//    private ActivityMainBinding binding;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        binding = ActivityMainBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//
-//        BottomNavigationView navView = findViewById(R.id.nav_view);
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(binding.navView, navController);
-//    }
-//
-//}
-
-
-
-
-
-
-
-
 import android.os.Bundle;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.myapplication.utils.UserManager;
 import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private NavController navController;
-    private BottomNavigationView navView;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Инициализация навигационного контроллера
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
+        navController = navHostFragment.getNavController();
 
-        // Инициализация нижней навигации
-        navView = findViewById(R.id.nav_view);
-        NavigationUI.setupWithNavController(navView, navController);
+        bottomNavigationView = findViewById(R.id.nav_view);
+        // Настройка BottomNavigationView с NavController
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-        // Скрываем нижнюю навигацию по умолчанию
-        navView.setVisibility(View.GONE);
-
-        // Проверяем, есть ли сохраненное состояние (например, при повороте экрана)
-        if (savedInstanceState == null) {
-            // Если нет, переходим на LoginFragment
-            navController.navigate(R.id.loginFragment);
-        }
+        // Слушатель изменений навигации для управления видимостью BottomNavigationView
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.loginFragment || destination.getId() == R.id.registrationFragment) {
+                bottomNavigationView.setVisibility(View.GONE);
+            } else {
+                bottomNavigationView.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
-    // Метод для перехода на домашнюю страницу и отображения нижней навигации
     public void navigateToHome() {
-        navController.navigate(R.id.navigation_home);
-        // Показываем нижнюю навигацию
-        navView.setVisibility(View.VISIBLE);
+        navController.navigate(R.id.action_loginFragment_to_navigation_home);
+    }
+
+    public void logout() {
+        // Очистка текущего пользователя
+        UserManager.getInstance().clearCurrentUser();
+
+        // Навигация на экран входа
+        navController.navigate(R.id.action_navigation_home_to_loginFragment);
     }
 }
-

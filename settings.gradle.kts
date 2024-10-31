@@ -1,16 +1,18 @@
+// settings.gradle.kts
+
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
+    plugins {
+        // Укажите версию плагина Android Gradle Plugin (AGP)
+        id("com.android.application") version "8.3.1"
+        id("org.jetbrains.kotlin.android") version "1.8.10"
+    }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -19,5 +21,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "My Application"
-include(":app")
+rootProject.name = "MyApplication" // Замените на имя вашего проекта
+include(":app") // Подключение модуля приложения

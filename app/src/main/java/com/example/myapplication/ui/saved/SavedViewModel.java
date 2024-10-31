@@ -1,19 +1,30 @@
+// SavedViewModel.java
 package com.example.myapplication.ui.saved;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
 
-public class SavedViewModel extends ViewModel {
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 
-    private final MutableLiveData<String> mText;
+import com.example.myapplication.repository.PasswordRepository;
 
-    public SavedViewModel() {
-        mText = new MutableLiveData<>();
-//        mText.setValue("This is dashboard fragment");
+import java.util.List;
+
+public class SavedViewModel extends AndroidViewModel {
+
+    private PasswordRepository passwordRepository;
+
+    public SavedViewModel(@NonNull Application application) {
+        super(application);
+        passwordRepository = PasswordRepository.getInstance(application.getApplicationContext());
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    /**
+     * Retrieves all accounts for the current user.
+     *
+     * @return List of Account objects.
+     */
+    public List<Account> getAllAccounts() {
+        return passwordRepository.getAllAccounts();
     }
 }

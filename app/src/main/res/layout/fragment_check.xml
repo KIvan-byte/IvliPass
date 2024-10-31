@@ -33,10 +33,5 @@
             android:paddingTop="16dp"
             android:text="Password Strength: " />
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Check" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <!-- Фрагмент входа -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myapplication.ui.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+    <!-- Фрагмент регистрации -->
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.myapplication.ui.registration.RegistrationFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <!-- Фрагмент генерации паролей (Home) -->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.myapplication.ui.generation.GenerationFragment"
+        android:label="@string/title_generation"
+        tools:layout="@layout/fragment_generation">
+        <action
+            android:id="@+id/action_navigation_home_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+    </fragment>
+
+    <!-- Фрагмент сохранённых паролей (Dashboard) -->
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.myapplication.ui.saved.SavedFragment"
+        android:label="@string/title_saved"
+        tools:layout="@layout/fragment_saved">
+        <!-- Действие для выхода, если необходимо -->
+        <action
+            android:id="@+id/action_savedFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Фрагмент проверки (Notifications) -->
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.myapplication.ui.check.CheckFragment"
+        android:label="@string/title_check"
+        tools:layout="@layout/fragment_check">
+        <!-- Действие для выхода, если необходимо -->
+        <action
+            android:id="@+id/action_navigation_notifications_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
