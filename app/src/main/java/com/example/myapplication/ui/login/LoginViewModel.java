@@ -16,7 +16,7 @@ public class LoginViewModel extends AndroidViewModel {
 
     private static final String TAG = "LoginViewModel";
     private static final String PREFS_FILENAME = "user_prefs";
-    private SharedPreferences encryptedSharedPreferences;
+    private final SharedPreferences encryptedSharedPreferences;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);

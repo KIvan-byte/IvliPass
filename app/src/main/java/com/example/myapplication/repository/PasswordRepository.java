@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PasswordRepository {
     private static PasswordRepository instance;
-    private GenerationViewModel generationViewModel;
+    private final GenerationViewModel generationViewModel;
 
     private PasswordRepository(Context context) {
         // Initialize ViewModel

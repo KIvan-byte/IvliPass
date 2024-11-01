@@ -2,9 +2,9 @@
 package com.example.myapplication.ui.saved;
 
 public class Account {
-    private String service;
-    private String email;
-    private String password;
+    private final String service;
+    private final String email;
+    private final String password;
 
     public Account(String service, String email, String password) {
         this.service = service;

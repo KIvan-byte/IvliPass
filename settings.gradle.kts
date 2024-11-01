@@ -8,8 +8,8 @@ pluginManagement {
     }
     plugins {
         // Укажите версию плагина Android Gradle Plugin (AGP)
-        id("com.android.application") version "8.3.1"
-        id("org.jetbrains.kotlin.android") version "1.8.10"
+        id("com.android.application") version "8.7.1"
+        id("org.jetbrains.kotlin.android") version "1.9.24"
     }
 }
 

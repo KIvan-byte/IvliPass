@@ -26,8 +26,8 @@ import javax.crypto.Cipher;
 public class GenerationViewModel extends AndroidViewModel {
 
     private static final String TAG = "GenerationViewModel";
-    private SecurePreferences securePreferences;
-    private KeyStoreManager keyStoreManager;
+    private final SecurePreferences securePreferences;
+    private final KeyStoreManager keyStoreManager;
 
     public GenerationViewModel(Application application) {
         super(application);

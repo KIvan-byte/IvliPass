@@ -17,7 +17,7 @@ public class RegistrationViewModel extends AndroidViewModel {
 
     private static final String TAG = "RegistrationViewModel";
     private static final String PREFS_FILENAME = "user_prefs";
-    private SharedPreferences encryptedSharedPreferences;
+    private final SharedPreferences encryptedSharedPreferences;
 
     public RegistrationViewModel(@NonNull Application application) {
         super(application);

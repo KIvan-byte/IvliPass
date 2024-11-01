@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class SecurePreferences {
     private static final String TAG = "SecurePreferences";
-    private SharedPreferences sharedPreferences;
+    private final SharedPreferences sharedPreferences;
 
     public SecurePreferences(Context context) {
         try {

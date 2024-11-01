@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SavedViewModel extends AndroidViewModel {
 
-    private PasswordRepository passwordRepository;
+    private final PasswordRepository passwordRepository;
 
     public SavedViewModel(@NonNull Application application) {
         super(application);
