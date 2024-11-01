@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/saved_fragment_constraintlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.saved.SavedFragment">
@@ -13,7 +12,7 @@
         android:id="@+id/searchServiceInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Search Service or Email"
+        android:hint="@string/search_service_or_email"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

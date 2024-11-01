@@ -28,8 +28,6 @@ import java.util.List;
 public class SavedFragment extends Fragment {
 
     private SavedViewModel savedViewModel;
-    private EditText searchServiceEditText;
-    private RecyclerView accountsRecyclerView;
     private AccountAdapter accountAdapter;
     private List<Account> allAccounts = new ArrayList<>();
 
@@ -45,8 +43,8 @@ public class SavedFragment extends Fragment {
         }
 
         // Initialize UI elements
-        searchServiceEditText = root.findViewById(R.id.searchServiceEditText);
-        accountsRecyclerView = root.findViewById(R.id.accountsRecyclerView);
+        EditText searchServiceEditText = root.findViewById(R.id.searchServiceEditText);
+        RecyclerView accountsRecyclerView = root.findViewById(R.id.accountsRecyclerView);
         accountsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         savedViewModel = new ViewModelProvider(this).get(SavedViewModel.class);
@@ -110,8 +108,8 @@ public class SavedFragment extends Fragment {
         List<Account> filteredList = new ArrayList<>();
         for (Account account : allAccounts) {
             // Check if service or email contains the query string
-            if (account.getService().toLowerCase().contains(query) ||
-                    account.getEmail().toLowerCase().contains(query)) {
+            if (account.service().toLowerCase().contains(query) ||
+                    account.email().toLowerCase().contains(query)) {
                 filteredList.add(account);
             }
         }

@@ -14,5 +14,4 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Dark Theme Background -->
-    <color name="background_dark">#121212</color>
 </resources>

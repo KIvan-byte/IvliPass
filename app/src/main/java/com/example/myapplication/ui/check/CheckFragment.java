@@ -1,6 +1,7 @@
 // CheckFragment.java
 package com.example.myapplication.ui.check;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +21,7 @@ public class CheckFragment extends Fragment {
     private CheckViewModel checkViewModel;
     private TextView strengthIndicator;
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -13,13 +13,15 @@
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="Generated Password"
+            android:text="@string/generated_password"
             android:textSize="24sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -30,7 +32,7 @@
                 android:id="@+id/serviceEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Service" />
+                android:hint="@string/service" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -41,14 +43,14 @@
                 android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email (Optional)" />
+                android:hint="@string/email_optional" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
             android:id="@+id/specialSymbolsCheckbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Include Special Symbols" />
+            android:text="@string/include_special_symbols" />
 
         <SeekBar
             android:id="@+id/passwordLengthSeekBar"
@@ -61,19 +63,19 @@
             android:id="@+id/passwordLengthText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password Length: 8" />
+            android:text="@string/password_length_8" />
 
         <Button
             android:id="@+id/generatePasswordButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Generate Password" />
+            android:text="@string/generate_password" />
 
         <Button
             android:id="@+id/savePasswordButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save Password" />
+            android:text="@string/save_password" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

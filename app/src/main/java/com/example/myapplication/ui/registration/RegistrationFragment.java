@@ -19,7 +19,6 @@ public class RegistrationFragment extends Fragment {
 
     private RegistrationViewModel registrationViewModel;
     private EditText usernameEditText, passwordEditText;
-    private Button registerButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,13 +31,10 @@ public class RegistrationFragment extends Fragment {
         // Инициализация элементов интерфейса
         usernameEditText = view.findViewById(R.id.usernameEditText);
         passwordEditText = view.findViewById(R.id.passwordEditText);
-        registerButton = view.findViewById(R.id.registerButton);
+        Button registerButton = view.findViewById(R.id.registerButton);
 
         // Установка обработчика для кнопки регистрации
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { registerUser(v); }
-        });
+        registerButton.setOnClickListener(this::registerUser);
 
         return view;
     }

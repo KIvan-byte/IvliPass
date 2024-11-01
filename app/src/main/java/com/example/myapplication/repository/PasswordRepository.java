@@ -3,11 +3,10 @@ package com.example.myapplication.repository;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
+
 
 import com.example.myapplication.ui.saved.Account;
 import com.example.myapplication.ui.generation.GenerationViewModel;
-import com.example.myapplication.utils.UserManager;
 
 import java.util.List;
 

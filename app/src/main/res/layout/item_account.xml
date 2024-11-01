@@ -14,7 +14,7 @@
         android:id="@+id/serviceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Service: Google"
+        android:text="@string/service_google"
         android:textStyle="bold"
         android:textSize="16sp"
         android:textColor="?attr/colorOnBackground" />
@@ -24,7 +24,7 @@
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email: user@example.com"
+        android:text="@string/email_user_example_com"
         android:textSize="14sp"
         android:textColor="?attr/colorOnBackground"
         android:layout_marginTop="4dp" />
@@ -34,7 +34,7 @@
         android:id="@+id/passwordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password: ********"
+        android:text="@string/passwordMega"
         android:textSize="14sp"
         android:textColor="?attr/colorOnBackground"
         android:layout_marginTop="2dp" />

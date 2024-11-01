@@ -1,6 +1,7 @@
 // GenerationFragment.java
 package com.example.myapplication.ui.generation;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -17,7 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.myapplication.R;
-import com.example.myapplication.utils.UserManager;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,9 +32,9 @@ public class GenerationFragment extends Fragment {
     private SeekBar passwordLengthSeekBar;
     private TextView passwordLengthText;
     private CheckBox specialSymbolsCheckbox;
-    private Button generatePasswordButton, savePasswordButton;
     private GenerationViewModel generationViewModel;
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,8 +45,8 @@ public class GenerationFragment extends Fragment {
         passwordLengthSeekBar = view.findViewById(R.id.passwordLengthSeekBar);
         passwordLengthText = view.findViewById(R.id.passwordLengthText);
         specialSymbolsCheckbox = view.findViewById(R.id.specialSymbolsCheckbox);
-        generatePasswordButton = view.findViewById(R.id.generatePasswordButton);
-        savePasswordButton = view.findViewById(R.id.savePasswordButton);
+        Button generatePasswordButton = view.findViewById(R.id.generatePasswordButton);
+        Button savePasswordButton = view.findViewById(R.id.savePasswordButton);
 
         // Initialize ViewModel
         generationViewModel = new ViewModelProvider(this).get(GenerationViewModel.class);
@@ -72,16 +72,10 @@ public class GenerationFragment extends Fragment {
         });
 
         // Set generate button click listener
-        generatePasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { generatePassword(); }
-        });
+        generatePasswordButton.setOnClickListener(v -> generatePassword());
 
         // Set save button click listener
-        savePasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { savePassword(view); }
-        });
+        savePasswordButton.setOnClickListener(v -> savePassword(view));
 
         return view;
     }

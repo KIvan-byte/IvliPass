@@ -10,6 +10,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.myapplication.utils.UserManager;
 import android.view.View;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private NavController navController;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavHostFragment navHostFragment =
                 (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
-        navController = navHostFragment.getNavController();
+        navController = Objects.requireNonNull(navHostFragment).getNavController();
 
         bottomNavigationView = findViewById(R.id.nav_view);
         // Настройка BottomNavigationView с NavController

@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKey;
-import com.example.myapplication.utils.UserManager;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import at.favre.lib.crypto.bcrypt.BCrypt;

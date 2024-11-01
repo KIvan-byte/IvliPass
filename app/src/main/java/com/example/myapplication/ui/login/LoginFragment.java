@@ -16,12 +16,11 @@ import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.utils.UserManager;
 
+
 public class LoginFragment extends Fragment {
 
     private LoginViewModel loginViewModel;
     private EditText usernameEditText, passwordEditText;
-    private Button loginButton;
-    private TextView registerTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,22 +33,14 @@ public class LoginFragment extends Fragment {
         // Initialize UI elements
         usernameEditText = view.findViewById(R.id.usernameEditText);
         passwordEditText = view.findViewById(R.id.passwordEditText);
-        loginButton = view.findViewById(R.id.loginButton);
-        registerTextView = view.findViewById(R.id.registerTextView);
+        Button loginButton = view.findViewById(R.id.loginButton);
+        TextView registerTextView = view.findViewById(R.id.registerTextView);
 
         // Set login button click listener
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { loginUser(); }
-        });
+        loginButton.setOnClickListener(v -> loginUser());
 
         // Set register TextView click listener
-        registerTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_registrationFragment);
-            }
-        });
+        registerTextView.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_registrationFragment));
 
         return view;
     }
@@ -63,7 +54,7 @@ public class LoginFragment extends Fragment {
             UserManager.getInstance().setCurrentUsername(username);
 
             // Переход на HomeFragment
-            ((MainActivity) getActivity()).navigateToHome();
+            ((MainActivity) requireActivity()).navigateToHome();
         } else {
             Toast.makeText(getContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
         }

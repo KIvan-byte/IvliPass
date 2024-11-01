@@ -1,6 +1,7 @@
 // AccountAdapter.java
 package com.example.myapplication.ui.saved;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,12 +29,13 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
         return new AccountViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         Account account = accounts.get(position);
-        holder.serviceTextView.setText("Service: " + account.getService());
-        holder.emailTextView.setText("Email: " + account.getEmail());
-        holder.passwordTextView.setText("Password: " + account.getPassword());
+        holder.serviceTextView.setText("Service: " + account.service());
+        holder.emailTextView.setText("Email: " + account.email());
+        holder.passwordTextView.setText("Password: " + account.password());
     }
 
     @Override
@@ -46,6 +48,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
      *
      * @param newAccounts New list of accounts to display.
      */
+    @SuppressLint("NotifyDataSetChanged")
     public void updateAccounts(List<Account> newAccounts) {
         this.accounts = newAccounts;
         notifyDataSetChanged();
