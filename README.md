@@ -53,7 +53,7 @@ IvliPass is an Android application designed for secure password management. It a
 
 ## Screenshots
 
-*(Add screenshots of the app to visually represent its interface)*
+![Regestration Screen](images/Regestration_Screen.png)
 
 ## Contribution
 
