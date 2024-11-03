@@ -1,10 +1,17 @@
-// SavedFragment.java
 package com.example.myapplication.ui.saved;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,19 +20,16 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Toast;
-
 import com.example.myapplication.R;
 import com.example.myapplication.utils.UserManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SavedFragment extends Fragment {
+/**
+ * Fragment for displaying saved accounts.
+ */
+public class SavedFragment extends Fragment implements AccountAdapter.OnItemClickListener {
 
     private SavedViewModel savedViewModel;
     private AccountAdapter accountAdapter;
@@ -35,9 +39,9 @@ public class SavedFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_saved, container, false);
 
-        // Check if user is logged in
+        // Check if user is authenticated
         if (UserManager.getInstance().getCurrentUsername() == null) {
-            // Redirect to login screen
+            // Navigate to login screen
             Navigation.findNavController(root).navigate(R.id.action_savedFragment_to_loginFragment);
             return root;
         }
@@ -49,12 +53,15 @@ public class SavedFragment extends Fragment {
 
         savedViewModel = new ViewModelProvider(this).get(SavedViewModel.class);
 
-        // Initialize Adapter with empty list
-        accountAdapter = new AccountAdapter(new ArrayList<>());
+        // Initialize adapter with empty list and set listener
+        accountAdapter = new AccountAdapter(new ArrayList<>(), this);
         accountsRecyclerView.setAdapter(accountAdapter);
 
-        // Fetch all accounts and display
-        loadAllAccounts();
+        // Observe changes in account list
+        savedViewModel.getAllAccountsLiveData().observe(getViewLifecycleOwner(), accounts -> {
+            allAccounts = accounts;
+            accountAdapter.updateAccounts(allAccounts);
+        });
 
         // Set up TextWatcher for dynamic search
         searchServiceEditText.addTextChangedListener(new TextWatcher() {
@@ -73,7 +80,7 @@ public class SavedFragment extends Fragment {
                     }
                     accountAdapter.updateAccounts(filteredList);
                 } else {
-                    // If search query is empty, display all accounts
+                    // If search string is empty, display all accounts
                     accountAdapter.updateAccounts(allAccounts);
                 }
             }
@@ -88,31 +95,80 @@ public class SavedFragment extends Fragment {
     }
 
     /**
-     * Loads all accounts from ViewModel and updates the RecyclerView.
-     */
-    private void loadAllAccounts() {
-        allAccounts = savedViewModel.getAllAccounts();
-        if (allAccounts.isEmpty()) {
-            Toast.makeText(getContext(), "No saved accounts found.", Toast.LENGTH_SHORT).show();
-        }
-        accountAdapter.updateAccounts(allAccounts);
-    }
-
-    /**
      * Filters the list of accounts based on the search query.
      *
-     * @param query The search query entered by the user.
-     * @return A list of accounts that match the query.
+     * @param query Search query entered by the user.
+     * @return List of accounts matching the query.
      */
     private List<Account> filterAccounts(String query) {
         List<Account> filteredList = new ArrayList<>();
         for (Account account : allAccounts) {
             // Check if service or email contains the query string
-            if (account.service().toLowerCase().contains(query) ||
-                    account.email().toLowerCase().contains(query)) {
+            if (account.getService().toLowerCase().contains(query) ||
+                    account.getEmail().toLowerCase().contains(query)) {
                 filteredList.add(account);
             }
         }
         return filteredList;
+    }
+
+    /**
+     * Handles the "Copy" button click.
+     *
+     * @param account Account to copy.
+     */
+    @Override
+    public void onCopyClick(Account account) {
+        // Copy password to clipboard
+        ClipboardManager clipboard = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Password", account.getPassword());
+        if (clipboard != null) {
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getContext(), "Password copied to clipboard.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Failed to copy password.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Handles the "Edit" button click.
+     *
+     * @param account  Account to edit.
+     * @param position Position of the account in the list.
+     */
+    @Override
+    public void onEditClick(Account account, int position) {
+        // Open dialog to edit account details
+        CopyEditDialogFragment dialog = CopyEditDialogFragment.newInstance(account, true, position);
+        dialog.setTargetFragment(this, 0);
+        dialog.show(getParentFragmentManager(), "EditDialog");
+    }
+
+    /**
+     * Handles the account being edited, received from the dialog.
+     *
+     * @param updatedAccount Updated account.
+     * @param position       Position of the account in the list.
+     */
+    public void onAccountEdited(Account updatedAccount, int position) {
+        // Update account in repository
+        savedViewModel.updateAccount(updatedAccount, position);
+
+        // Show confirmation
+        Toast.makeText(getContext(), "Account successfully updated.", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Handles the account being deleted, received from the dialog.
+     *
+     * @param account  Account to delete.
+     * @param position Position of the account in the list.
+     */
+    public void onDeleteClick(Account account, int position) {
+        // Delete account from repository
+        savedViewModel.deleteAccount(position);
+
+        // Show confirmation
+        Toast.makeText(getContext(), "Account successfully deleted.", Toast.LENGTH_SHORT).show();
     }
 }
