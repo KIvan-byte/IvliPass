@@ -1,10 +1,9 @@
-// AccountAdapter.java
 package com.example.myapplication.ui.saved;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,12 +12,31 @@ import com.example.myapplication.R;
 
 import java.util.List;
 
+/**
+ * Adapter for displaying accounts in RecyclerView.
+ */
 public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountViewHolder> {
 
     private List<Account> accounts;
+    private final OnItemClickListener listener;
 
-    public AccountAdapter(List<Account> accounts) {
+    /**
+     * Interface for handling button clicks.
+     */
+    public interface OnItemClickListener {
+        void onCopyClick(Account account);
+        void onEditClick(Account account, int position);
+    }
+
+    /**
+     * Constructor for AccountAdapter.
+     *
+     * @param accounts List of accounts to display.
+     * @param listener Listener for button clicks.
+     */
+    public AccountAdapter(List<Account> accounts, OnItemClickListener listener) {
         this.accounts = accounts;
+        this.listener = listener;
     }
 
     @NonNull
@@ -29,13 +47,18 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
         return new AccountViewHolder(view);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         Account account = accounts.get(position);
-        holder.serviceTextView.setText("Service: " + account.service());
-        holder.emailTextView.setText("Email: " + account.email());
-        holder.passwordTextView.setText("Password: " + account.password());
+        holder.serviceTextView.setText("Service: " + account.getService());
+        holder.emailTextView.setText("Email: " + account.getEmail());
+
+        // Set masked password
+        holder.passwordTextView.setText("Password: ********");
+
+        // Set click listeners for buttons
+        holder.copyButton.setOnClickListener(v -> listener.onCopyClick(account));
+        holder.editButton.setOnClickListener(v -> listener.onEditClick(account, position));
     }
 
     @Override
@@ -44,26 +67,32 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
     }
 
     /**
-     * Updates the list of accounts and refreshes the RecyclerView.
+     * Updates the list of accounts and notifies the adapter of data changes.
      *
      * @param newAccounts New list of accounts to display.
      */
-    @SuppressLint("NotifyDataSetChanged")
     public void updateAccounts(List<Account> newAccounts) {
         this.accounts = newAccounts;
         notifyDataSetChanged();
     }
 
+    /**
+     * ViewHolder for account items.
+     */
     static class AccountViewHolder extends RecyclerView.ViewHolder {
         TextView serviceTextView;
         TextView emailTextView;
         TextView passwordTextView;
+        ImageButton copyButton;
+        ImageButton editButton;
 
         public AccountViewHolder(@NonNull View itemView) {
             super(itemView);
             serviceTextView = itemView.findViewById(R.id.serviceTextView);
             emailTextView = itemView.findViewById(R.id.emailTextView);
             passwordTextView = itemView.findViewById(R.id.passwordTextView);
+            copyButton = itemView.findViewById(R.id.copyButton);
+            editButton = itemView.findViewById(R.id.editButton);
         }
     }
 }

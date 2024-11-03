@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,65 +18,84 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <!-- Generated Password Display -->
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:text="@string/generated_password"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:gravity="center_vertical|center_horizontal"/>
 
+        <!-- Service Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="@string/service"
+            android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/serviceEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/service" />
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Email Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="@string/email_optional"
+            android:layout_marginTop="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email_optional" />
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Special Symbols Checkbox -->
         <CheckBox
             android:id="@+id/specialSymbolsCheckbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/include_special_symbols" />
+            android:text="@string/include_special_symbols"
+            android:layout_marginTop="8dp" />
 
+        <!-- Password Length SeekBar -->
         <SeekBar
             android:id="@+id/passwordLengthSeekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="20"
-            android:progress="8" />
+            android:max="32"
+            android:progress="16" /> <!-- Adjust initial progress if needed -->
 
+        <!-- Password Length Display -->
         <TextView
             android:id="@+id/passwordLengthText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/password_length_8" />
+            android:text="@string/password_length_16"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp" />
 
+        <!-- Generate Password Button -->
         <Button
             android:id="@+id/generatePasswordButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/generate_password" />
+            android:text="@string/generate_password"
+            android:layout_marginTop="16dp" />
 
+        <!-- Save Password Button -->
         <Button
             android:id="@+id/savePasswordButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/save_password" />
+            android:text="@string/save_password"
+            android:layout_marginTop="8dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

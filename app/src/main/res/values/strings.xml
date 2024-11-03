@@ -1,3 +1,4 @@
+<!-- strings.xml -->
 <resources>
     <string name="app_name">IvliPass</string>
     <string name="title_generation">Generation</string>
@@ -10,7 +11,6 @@
     <string name="service">Service</string>
     <string name="email_optional">Email (Optional)</string>
     <string name="include_special_symbols">Include Special Symbols</string>
-    <string name="password_length_8">Password Length: 8</string>
     <string name="generate_password">Generate Password</string>
     <string name="save_password">Save Password</string>
     <string name="log_in">Log In</string>
@@ -20,5 +20,17 @@
     <string name="search_service_or_email">Search Service or Email</string>
     <string name="service_google">Service: Google</string>
     <string name="email_user_example_com">Email: user@example.com</string>
-    <string name="passwordMega">Password: ********</string>
+    <string name="passwordMega">Password: ***********</string>
+    <string name="password_length_min">Password Length: %1$d</string>
+    <string name="password_length_16">Password Length: 16</string>
+    <string name="password_length">Password length: %1$d</string>
+    <string name="password_saved_success">Password saved successfully</string>
+    <string name="service_password_empty">Service and password cannot be empty</string>
+    <!-- New Strings for Dialog -->
+    <string name="copy">Copy</string>
+    <string name="edit">Edit</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>/>
 </resources>
