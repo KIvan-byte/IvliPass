@@ -51,34 +51,10 @@ IvliPass is an Android application designed for secure password management. It a
 - `Account` — Data model for user accounts, with fields for `service`, `email`, and `password`.
 - `AccountAdapter` — RecyclerView adapter for displaying account lists with options to copy or edit passwords.
 
-## Screenshots
+## Example of work
 
-<div style="display: flex; flex-direction: row; gap: 10px;">
-    <div style="text-align: center;">
-        <img src="images/Check_Password_Screen.png" width="150"/> 
-        <p>Check Password Screen</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="images/Edit_Window.png" width="150"/> 
-        <p>Edit Window</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="images/Generation_Screen.png" width="150"/> 
-        <p>Generation Screen</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="images/Login_Screen.png" width="150"/> 
-        <p>Login Screen</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="images/Regestration_Screen.png" width="150"/> 
-        <p>Registration Screen</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="images/Saved_Screen.png" width="150"/> 
-        <p>Saved Screen</p>
-    </div>
-</div>
+<img src="./images/example.gif" alt="Example of work" width="500">
+
 
 ## Contribution
 
