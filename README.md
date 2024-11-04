@@ -16,7 +16,7 @@ IvliPass is an Android application designed for secure password management. It a
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/IvliPass.git
+   git clone https://github.com/KIvan-byte/IvliPass
    ```
 2. Open the project in Android Studio.
 3. Sync the project with Gradle and build it.
@@ -54,24 +54,6 @@ IvliPass is an Android application designed for secure password management. It a
 ## Example of work
 
 <img src="./images/example.gif" alt="Example of work" width="250">
-
-
-## Contribution
-
-1. Fork the project.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
-4. Push your changes:
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-5. Open a Pull Request.
 
 ## License
 
