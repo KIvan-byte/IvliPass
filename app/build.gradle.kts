@@ -41,6 +41,9 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.mockito.core)
+    implementation(libs.mockito.inline)
     implementation(libs.core)
     implementation(libs.appcompat)
     implementation(libs.material)
