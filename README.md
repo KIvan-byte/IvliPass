@@ -3,7 +3,7 @@
 
 IvliPass is an Android application designed for secure password management. It allows users to safely store, generate, and manage passwords for different services. The project is built using Android Jetpack and employs cryptographic techniques for enhanced security.
 
-[User Story](./images/user%20stories.pdf)
+[User Story and Splits](./images/user%20stories.pdf)
 
 
 ## Features
